@@ -3,7 +3,7 @@ class Arm {
   PVector start; // Start point of the arm
   PVector goal; // Point to go on
   float[] lines; // Length of all shafts connecting points
-  float[] angles; // Angles of all shaft (counter-clockwise from the +x axis)
+  float[] angles; // Angles of all shaft (counter-clockwise from the +x axis) //CCW from the previous angle
   PVector[] points; // Points of the arm
   
   public Arm(int segments, PVector startPoint, PVector goalPoint) {
@@ -62,17 +62,19 @@ class Arm {
   Start from the goal and adjust point position to the start point
   */
   void backward() {
-    points[num - 1] = goal.copy(); // Set last point on goal
-    for (int i = num - 1; i > 0; --i) {
-      /*
-      Place the previous point on the line between the current point and the current position of the previous point
-      At a distance of the length of the shaft
-      Repeat for all point from the last one to the first
-      */
+    //points[num - 1] = goal.copy(); // Set last point on goal
+    for (int i = num; i > 0; --i) {
+      
+      //calculate angle from goal to last point
+      //move angle in direction to decrease goal angle difference
+      //go to next angle.
+      //testing git
+      
       PVector a = points[i].copy();
       PVector b = points[i-1].copy();
 
       PVector dir = b.copy().sub(a).normalize().mult(lines[i - 1]);
+      
     
       points[i - 1] = a.add(dir);
     }

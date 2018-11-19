@@ -8,7 +8,7 @@ void setup()
   size(800, 800);
   
   // Set shafts length
-  arm.setShaftLength(0, 180);
+  arm.setShaftLength(0, 180); //1 inch = 10 pixels
   arm.setShaftLength(1, 120);
   //arm.setShaftLength(2, 40);
   // init points
